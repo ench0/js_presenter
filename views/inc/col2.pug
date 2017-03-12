@@ -1,0 +1,39 @@
+div.sixteen.wide.left.aligned.column
+    div.ui.basic.segment
+        h2.ui.horizontal.inverted.divider.header(style="margin-top:14px;") NEWS
+
+
+        
+        div.sixteen.wide.column
+            div(style="padding:0px 10px; height: 600px;" class="ui divided middle aligned striped list")
+                for row in rows[1]
+                    h3.ui.top.attached.segment.header(style="padding:.5em;")= S(row.title).stripTags().truncate(70).s
+                    div(style="padding:10px 10px;height:90px;background:none;" class="item ui middle attached segment")
+                        a
+                            img(src="/images/icci/"+row.id+"/"+row.image title="" class="ui avatar left floated image")
+                        div.content(style="padding:10px;")
+                            div.description= S(row.body).stripTags().truncate(230).s
+
+                    h5.ui.bottom.attached.segment.header(style="padding:.25em;height:20px;")
+                        span(style="float:left;")
+                            i.icon.write
+                            span= row.day + '/' + row.month + '/' + row.year
+                        span(style="float:right;margin-right:5px;")
+                            i.icon.mouse.pointer
+                            span= S('http://islamireland.ie/news/' + row.name).truncate(65).s
+
+
+        h2.ui.horizontal.inverted.divider.header(style="margin-top:40px;") ACTIVITIES
+
+  
+        ul.ui.basic.segment.slider2(style="padding:0 10px;")
+
+            for row in rows[2]
+
+                li(style="height:294px;padding: 0;")
+                    img(src="/images/icci/"+row.id+"/"+row.image title=S(row.title).stripTags().truncate(64).s class="ui fluid image")
+
+            //- <%= for item <- @gallery do %>
+            //- <% [id, title, date, image] = item %>
+            //- <%  { date, _time } = date %>
+            //- <% {_, date} = Date.from_erl(date) %>

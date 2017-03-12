@@ -1,0 +1,89 @@
+extends layout_edit
+
+block content
+  div.ui.fixed.inverted.menu
+    div.ui.inverted.orange.vertical.masthead.center.aligned.basic.segment
+      div.ui.text.container
+        h1.ui.inverted.header Islamic Cultural Centre of Ireland
+
+
+  div.ui.main.text.container
+    h2.ui.header #{title}
+    if message
+      div.ui.icon.positive.message
+        i.inbox.icon
+        div.content
+          div.header #{message}
+          //- - message=nil
+          //- p!= req.body
+
+
+
+    table.ui.celled.table
+      thead
+        tr
+          th.three.wide Prayer
+          th.center.aligned.two.wide Adhan
+          th.center.aligned.two.wide Iqamah
+          th.center.aligned.four.wide Calculation method
+          th.center.aligned Calculation offset
+
+
+      tbody
+      each val in time
+        tr
+          td!= value=(val.name===time.nextPrayerName ? '<strong>'+val.name+'</strong>' : val.name)
+          td.center.aligned= value=(undefined===val ? '' : val.prayerTimeDisp)
+          td.center.aligned= value=(undefined===val ? '' : val.jamaahTimeDisp)
+          td.center.aligned
+            if val.jamaahMethod=="beforenext"
+              span Before next
+            else if val.jamaahMethod=="afterthis"
+              span After adhan
+            else if val.jamaahMethod=="fixed"
+              span Fixed time
+            else
+              span
+              
+          td.center.aligned
+            if val.jamaahOffsetHour
+            - if(val.jamaahOffsetMinute < 10) minutepre = '0' + val.jamaahOffsetMinute; else minutepre = val.jamaahOffsetMinute;
+              span= val.jamaahOffsetHour + ":" + minutepre
+
+
+
+
+    div.ui.small.segment
+      div.column
+        h3= settings.title
+        p(style='white-space:pre-line;')= settings.body
+      div.column
+        hr
+        h4= settings.announcement
+      div.column
+        hr
+        p= settings.refreshmessage
+
+
+
+    div.ui.equal.width.grid.small.segment
+      div.six.wide.column
+        = "Screen refresh: " + settings.refresh + " minutes"
+      div.six.wide.column
+        = "Jummuah time: " + settings.jummuahtime
+      div.four.wide.column
+        = "Hijri offset: " + settings.hijrioffset
+
+
+    div.ui.small.basic.segment
+      a.ui.rounded.inverted.primary.button(href="/edit") Edit
+
+
+
+
+
+  //- div.ui.inverted.vertical.footer.segment
+  //-   div.ui.center.aligned.container
+  //-     div.ui.inverted.section.divider
+  //-     div.ui.horizontal.inverted.small.divided.link.list
+  //-       a.item Site Map

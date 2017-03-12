@@ -1,0 +1,8 @@
+<h1>kksssmkk</h1>
+    <script src='/reload/reload.js' />
+reloadServer = reload(server, app);
+watch.watchTree(__dirname + "/public", function (f, curr, prev) {
+    // Fire server-side reload event
+    reloadServer.reload();
+});
+    </script>
