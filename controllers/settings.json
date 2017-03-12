@@ -1,11 +1,11 @@
 {
   "title": "Hadith2",
   "refresh": "120",
-  "hijrioffset": "2",
+  "hijrioffset": "1",
   "body": "Hadith text\r\nAgain some text lorem ipsum etc Again some text lorem ipsum etc Again some text lorem ipsum etc \r\nAgain \r\nsome text lorem ipsum etc\r\nAgain some text lorem ipsum etcAgain some text lorem ipsum e",
   "announcement": "Again some text lorem ipsum etc ",
   "jummuahtime": "13:10",
   "jamaahmethods": "beforenext,,fixed,afterthis,afterthis,fixed",
   "jamaahoffsets": "1:0,,13:10,0:15,0:10,21:0",
-  "refreshmessage": "Welcome!!!"
+  "refreshmessage": "Welcome!!?"
 }
