@@ -47,8 +47,8 @@ block content
               
           td.center.aligned
             if val.jamaahOffsetHour
-            - if(val.jamaahOffsetMinute < 10) minutepre = '0' + val.jamaahOffsetMinute; else minutepre = val.jamaahOffsetMinute;
-              span= val.jamaahOffsetHour + ":" + minutepre
+              - if(val.jamaahOffsetMinute < 10) minutepre = '0' + val.jamaahOffsetMinute; else minutepre = val.jamaahOffsetMinute;
+                span= val.jamaahOffsetHour + ":" + minutepre
 
 
 
