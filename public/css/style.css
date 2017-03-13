@@ -129,12 +129,17 @@ h5.ui.bottom.attached.segment.header {
 
 
 .ui.small.header {
-    font-size: 2.4em;
+    font-size: 2.8em;
     color: #fff;
     font-weight: 400;
+    margin:-1em 0 1em;
 }
 .ui.present .ui.small.header {
     font-size: 1.4em;
+}
+#pending-name, #timetoprayer {
+    font-size: 1.2em;
+    line-height: 1.6em;
 }
 h4.ui.header {
     font-size: .8em;
@@ -156,7 +161,7 @@ h4.ui.header {
     min-height: .5em;
     font-size: 6em;
     padding:0;
-    margin:0 0 -.3em 0;
+    margin:0 0 -.5em 0;
 }
 .ui.header {
     font-family: Roboto,'Helvetica Neue',Arial,Helvetica,sans-serif;
