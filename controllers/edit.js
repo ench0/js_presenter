@@ -53,7 +53,8 @@ exports.edit_post = function(req, res, next) {
     
     if (errors) {
         //If there are errors render the form again, passing the previously entered values and errors
-        res.render('edit', { title: 'Edit Timetable', settings: settings, errors: errors, time: time, body: req.body});
+        console.log("Error!", settings)
+        res.render('edit', { title: 'Edit Timetable', errors: errors, settings: settings, time: time, body: req.body, message: message });
     return;
     } 
     // else {
@@ -93,7 +94,7 @@ exports.edit_post = function(req, res, next) {
         console.log(req.body.jamaahmethodfajr);
         // jamaahmethods = (req.body.jamaahmethods).split(",");
 
-        var settings = {
+        var settingsnew = {
                 "title":req.body.title,
                 "refresh":req.body.refresh,
                 "hijrioffset":req.body.hijrioffset,
@@ -119,18 +120,18 @@ exports.edit_post = function(req, res, next) {
         
         var file = __dirname+'/settings.json'
         
-        jsonfile.writeFile(file, settings, {spaces: 2}, function(err) {
+        jsonfile.writeFile(file, settingsnew, {spaces: 2}, function(err) {
             console.error("errors")
             console.error(err)
             console.error("file")
             console.error(file)
             console.error("settings")
-            console.error(settings)
+            console.error(settingsnew)
         })
 
 
-        // res.redirect("/view/?message=Sucess!");
-        res.render('view', { title: 'View Timetable', settings: settings, time: time, message: message });
+        res.redirect("/view/?message=Sucess!");
+        // res.render('view', { title: 'View Timetable', settingsnew: settingsnew   , time: time, message: message });
 
         // console.log(settings);
 
