@@ -26,16 +26,6 @@ exports.view = function(req, res, next) {
 
     // console.log("!!!!!"+time)
 
-        //restart
-        var sys = require('sys')
-        var exec = require('child_process').exec;
-        var child;
-        var sys = require('sys')
-        var exec = require('child_process').exec;
-        function puts(error, stdout, stderr) { sys.puts(stdout) }
-        exec("pm2 reload www", puts);
-
-
     var message = req.query.message;
     res.render('view', { title: 'View Timetable', settings: settings, time: time, message: message });
 };
