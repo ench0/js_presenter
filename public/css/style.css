@@ -140,6 +140,8 @@ h5.ui.bottom.attached.segment.header {
 #pending-name, #timetoprayer {
     font-size: 1.2em;
     line-height: 1.6em;
+    padding: 0 0 1em;
+    margin: 0;
 }
 h4.ui.header {
     font-size: .8em;
