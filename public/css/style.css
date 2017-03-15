@@ -7,6 +7,7 @@ body {
     background: url('../images/marble.png') repeat #90A49B;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 h2, .ui.header {
     font-weight: 400;
