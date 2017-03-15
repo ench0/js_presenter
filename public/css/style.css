@@ -7,7 +7,6 @@ body {
     background: url('../images/marble.png') repeat #90A49B;
     padding: 0;
     margin: 0;
-    overflow: hidden;
 }
 h2, .ui.header {
     font-weight: 400;
@@ -141,7 +140,7 @@ h5.ui.bottom.attached.segment.header {
 #pending-name, #timetoprayer {
     font-size: 1.2em;
     line-height: 1.6em;
-    padding: 0 0 1em;
+    padding:0;
     margin: 0;
 }
 h4.ui.header {
