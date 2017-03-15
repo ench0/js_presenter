@@ -50,7 +50,7 @@ exports.view = function(req, res, next) {
         +'AND field_poster.data IS NOT NULL '
         +'GROUP BY pages.id '
         +'ORDER BY pages.id DESC '
-        +'LIMIT 5; '
+        +'LIMIT 3; '
         +'SELECT pages.id, pages.name, pages.parent_id, pages.status, field_images.data AS image, field_title.data AS title, field_body.data AS body, field_poster.data AS poster, YEAR(field_date.data) as year, MONTH(field_date.data) as month, DAY(field_date.data) as day '
         +'FROM pages '
         +'LEFT JOIN field_images ON (pages.id = field_images.pages_id AND (field_images.data = 0) ) '
