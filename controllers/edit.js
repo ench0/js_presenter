@@ -4,6 +4,7 @@ var time = require('./time');
 // var fs = require('fs');
 // var zlib = require('zlib');
 var jsonfile = require('jsonfile')
+var S = require('string');
 
 
 
@@ -40,8 +41,9 @@ exports.edit_post = function(req, res, next) {
     req.checkBody('title', 'Title required').notEmpty(); 
     
     //Trim and escape the name field. 
-    req.sanitize('body').escape();
-    req.sanitize('body').trim();
+    // req.sanitize('body').escape();
+    var body = S(req.body.body).stripTags().s
+    // req.sanitize('body').trim();
     
     //Run the validators
     var errors = req.validationErrors();
@@ -98,7 +100,7 @@ exports.edit_post = function(req, res, next) {
                 "title":req.body.title,
                 "refresh":req.body.refresh,
                 "hijrioffset":req.body.hijrioffset,
-                "body":req.body.body,
+                "body":body,
                 "announcement":req.body.announcement,
                 "jummuahtime": req.body.jummuahtimehour+':'+req.body.jummuahtimeminute,
                 "jamaahmethods":req.body.jamaahmethodfajr+",,"+req.body.jamaahmethoddhuhr+","+req.body.jamaahmethodasr+","+req.body.jamaahmethodmaghrib+","+req.body.jamaahmethodisha,

@@ -171,13 +171,19 @@ h4.ui.header {
 }
 .ui.attached.segment {
     border: 2px solid rgba(255,255,255,.75);
-    font-size: 1em;
+    font-size: .65em;
+}
+.third .ui.attached.segment {
+    font-size: .85em;
 }
 .ui.bottom.attached.segment {
     font-size: .8em;
 }
 .first .ui.middle.attached.segment {
     height: 80px;
+}
+.third .ui.middle.attached.segment p {
+ width: 450px;
 }
 .ui.segments {
     border: none;
@@ -231,7 +237,9 @@ div.row.prayers div {
 .third .sixteen.wide.middle.aligned.column {
     padding: 0;
 }
-
+.ui.four.column.grid{
+    padding-bottom:.5em;
+}
 
 
 .ui.present .ui.grid>.stretched.column
@@ -327,7 +335,12 @@ div.row.prayers div {
     background: none;
 }
 
-
+#date {
+    padding-top: 1em;
+}
+.third .ui.bottom.attached.basic.segment {
+    padding: 0;
+}
 
 h4.ui.horizontal.divider.header span {
     font-weight: 300;
