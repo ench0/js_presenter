@@ -6,6 +6,14 @@ var edit = require('../controllers/edit');
 var present = require('../controllers/present');
 var timedef = "var settings="+JSON.stringify(settings);
 
+
+var auth = require('http-auth');
+var basic = auth.basic({
+    realm: "Admin Area",
+    file: __dirname + "/user.pass"
+});
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -18,13 +26,19 @@ router.get('/mobile', function(req, res, next) {
 });
 
 /* GET request for creating a Genre. NOTE This must come before route that displays Genre (uses id) */
-router.get('/edit', edit.edit_get);
+router.get('/edit', auth.connect(basic), edit.edit_get);
 
 /* POST request for creating Genre. */
-router.post('/edit', edit.edit_post);
+router.post('/edit', auth.connect(basic), edit.edit_post);
 
 router.get('/view', edit.view);
 
 router.get('/present', present.view);
 
 module.exports = router;
+
+
+
+// app.get('/admin', auth.connect(basic), (req, res) => {
+//     res.send(`Hello from admin area - ${req.user}!`);
+// });
