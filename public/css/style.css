@@ -74,6 +74,7 @@ span.left.floated {
 
 h3.ui.top.attached.segment.header {
     font-size: 1em;
+    font-weight: 900;
 }
 
 .ui.top.attached.header, .ui.bottom.attached.header {
@@ -106,8 +107,8 @@ h5.ui.bottom.attached.segment.header {
 }
 
 .ui.avatar.image {
-    width: 6em;
-    height: 6em;
+    width: 7em;
+    height: 7em;
     border-radius: 1rem;
 }
 
@@ -170,7 +171,13 @@ h4.ui.header {
 }
 .ui.attached.segment {
     border: 2px solid rgba(255,255,255,.75);
+    font-size: 1em;
+}
+.ui.bottom.attached.segment {
     font-size: .8em;
+}
+.first .ui.middle.attached.segment {
+    height: 80px;
 }
 .ui.segments {
     border: none;

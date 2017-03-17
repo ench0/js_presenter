@@ -10,7 +10,7 @@ div.ui.basic.segment.slider
                 div(style="padding:5px 0px 25px;margin:10px 5px;text-align:justify;")
                     h3.ui.top.attached.segment.header= S(row.title).stripTags().truncate(70).s
                         //- <%= Curtail.truncate(HtmlSanitizeEx.strip_tags(title), word_boundary: ~r/\S[\.]/, length: 68, omission: "...") %>
-                    h4.ui.middle.attached.segment= S(row.body).stripTags().truncate(360).s
+                    h4.ui.middle.attached.segment= S(row.body).stripTags().truncate(220).s
                     //- <%= Curtail.truncate(HtmlSanitizeEx.strip_tags(body), word_boundary: ~r/\S[\.]/, length: 420, omission: "...") %>
 
                     h5.ui.bottom.attached.segment.header
