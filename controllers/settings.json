@@ -1,11 +1,11 @@
 {
-  "title": "Hadith",
+  "title": "Reminder",
   "refresh": "120",
   "hijrioffset": "0",
-  "body": "Narrated Abu Huraira: Allah's Apostle (p.b.u.h) talked about Friday and said, \"There is an hour (opportune \r\ntime) on Friday and if a Muslim gets it while praying and asks something from Allah, then Allah will \r\ndefinitely meet his demand.\"\r\nAnd he (the Prophet) pointed out the shortness of that time with his hands.",
+  "body": "This Sunday the clock will move forward 1 hour.\r\nAll of the prayers will therefore start 1 hour later based on this calculation.\r\nJummuah prayer will remain at 13:15",
   "announcement": "Jummuah Prayer",
   "jummuahtime": "13:10",
   "jamaahmethods": "afterthis,,fixed,afterthis,afterthis,afterthis",
-  "jamaahoffsets": "0:30,,13:10,0:15,0:10,0:15",
+  "jamaahoffsets": "0:30,,13:50,0:15,0:10,0:15",
   "refreshmessage": "Welcome!"
 }
