@@ -8,12 +8,13 @@
 (function(){
 
 // --------- PRAYER CONSTRUCTOR --------- //
-var Prayer = function(name, namenext, tomorrow) {
+var Prayer = function(name, namenext, tomorrow, dst) {
 	this.name = name;
 	this.namenext = namenext;
 	this.tomorrow = tomorrow;
+	this.dst = dst;
 
-	this.now = moment().tz("Europe/Dublin").add(tomorrow, 'd');
+	this.now = moment().tz("Europe/Dublin").add(tomorrow+dst, 'd');
 	this.adj = 0;
 	this.daybegin = this.now.startOf('day');
 	this.dayend = this.now.endOf('day');
@@ -50,13 +51,14 @@ var prayers = function(tomorrow) {
 
 	this.tomorrow = tomorrow;
 	var now = moment().tz("Europe/Dublin").add(tomorrow, 'd');
+  if (now.isDST()) var dst = 1; else var dst = 0;
 
-	var fajr = new Prayer("fajr", "shurooq", tomorrow)
-	var shurooq = new Prayer("shurooq", "dhuhr", tomorrow)
-	var dhuhr = new Prayer("dhuhr", "asr", tomorrow)
-	var asr = new Prayer("asr", "maghrib", tomorrow)
-	var maghrib = new Prayer("maghrib", "isha", tomorrow)
-	var isha = new Prayer("isha", "fajr", tomorrow)
+	var fajr = new Prayer("fajr", "shurooq", tomorrow, dst)
+	var shurooq = new Prayer("shurooq", "dhuhr", tomorrow, dst)
+	var dhuhr = new Prayer("dhuhr", "asr", tomorrow, dst)
+	var asr = new Prayer("asr", "maghrib", tomorrow, dst)
+	var maghrib = new Prayer("maghrib", "isha", tomorrow, dst)
+	var isha = new Prayer("isha", "fajr", tomorrow, dst)
 
 	// current - next
 	if (tomorrow == 1) {var current = isha; var next = fajr}
@@ -101,6 +103,10 @@ var timeDisp = (function() {
 	var diffnext = (next.time).add(1, 's').diff(now, 'seconds');//add 1 s
 	var countnext = moment.duration(diffnext, 'seconds');
 	now = moment().tz("Europe/Dublin").add(tomorrow,'d');
+
+  // console.log(now.isDST());
+
+
 
 	var gregorian = now.format("dddd, D MMMM YYYY");
 	var hijri = now.add(settings.hijrioffset, 'd').format("iD iMMMM iYYYY");
