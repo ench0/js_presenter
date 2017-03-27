@@ -13,8 +13,9 @@ var Prayer = function(name, namenext, tomorrow, dst) {
 	this.namenext = namenext;
 	this.tomorrow = tomorrow;
 	this.dst = dst;
+  console.log(this.dst)
 
-	this.now = moment().tz("Europe/Dublin").add(tomorrow+dst, 'd');
+	this.now = moment().tz("Europe/Dublin").add(this.tomorrow).add(this.dst, 'h');
 	this.adj = 0;
 	this.daybegin = this.now.startOf('day');
 	this.dayend = this.now.endOf('day');
@@ -26,18 +27,18 @@ var Prayer = function(name, namenext, tomorrow, dst) {
 
 	// if (this.prayer == "isha") this.adj = this.adj+1;
 	this.year = moment().add(this.adj+this.tomorrow, 'd').format("YYYY");
-	this.month = moment().add(this.adj+this.tomorrow, 'd').format("MMM").toLowerCase();
+	this.month = moment().add(this.adj+this.tomorrow, 'd').format("MM");
 	this.day = moment().add(this.adj+this.tomorrow, 'd').format("D");
-	this.time = moment(this.year+'-'+this.month+'-'+this.day+'T'+timetable[this.month][this.day][this.num], "YYYY-MMM-DTHH:mm");
-	this.next = moment(this.year+'-'+this.month+'-'+this.day+'T'+timetable[this.month][this.day][this.numnext], "YYYY-MMM-DTHH:mm");
-	this.time2 = moment(this.year+'-'+this.month+'-'+this.day+'T'+timetable[this.month][this.day][this.num], "YYYY-MMM-DTHH:mm");
-	this.disp = moment(this.year+'-'+this.month+'-'+this.day+'T'+timetable[this.month][this.day][this.num], "YYYY-MMM-DTHH:mm").format("HH:mm");
+	this.time = moment(this.year+'-'+this.month+'-'+this.day+' '+timetable[this.month][this.day][this.num]).add(this.dst, 'h');
+	this.next = moment(this.year+'-'+this.month+'-'+this.day+' '+timetable[this.month][this.day][this.numnext]).add(this.dst, 'h');
+	this.time2 = moment(this.year+'-'+this.month+'-'+this.day+' '+timetable[this.month][this.day][this.num]).add(this.dst, 'h');
+	this.disp = moment(this.year+'-'+this.month+'-'+this.day+' '+timetable[this.month][this.day][this.num]).add(this.dst, 'h').format("HH:mm");
 
 	this.jamaahmethod = (settings.jamaahmethods).split(",")[this.num];
 	this.jamaahoffset = ((settings.jamaahoffsets).split(",")[this.num]).split(":");
 	switch (this.jamaahmethod) {
 		case "afterthis": this.jamaahtime = (this.time2).add(this.jamaahoffset[0], 'H').add(this.jamaahoffset[1], 'm'); break;
-		case "fixed": this.jamaahtime = moment(this.year+'-'+this.month+'-'+this.day+'T'+this.jamaahoffset[0]+":"+this.jamaahoffset[1], "YYYY-MMM-DTH:mm"); break;
+		case "fixed": this.jamaahtime = moment(this.year+'-'+this.month+'-'+this.day+' '+this.jamaahoffset[0]+":"+this.jamaahoffset[1]); break;
 		case "beforenext": this.jamaahtime = (this.next).subtract(this.jamaahoffset[0], 'HH').subtract(this.jamaahoffset[1], 'm'); break;
 		case "": this.jamaahtime = "";
 	}
@@ -51,7 +52,9 @@ var prayers = function(tomorrow) {
 
 	this.tomorrow = tomorrow;
 	var now = moment().tz("Europe/Dublin").add(tomorrow, 'd');
-  if (now.isDST()) var dst = 1; else var dst = 0;
+  if (now.isDST() && moment().format("MM") == "03") var dst = 1;
+  else if (now.isDST() && moment().format("MM") == "10") var dst = -1;
+  else var dst = 0;
 
 	var fajr = new Prayer("fajr", "shurooq", tomorrow, dst)
 	var shurooq = new Prayer("shurooq", "dhuhr", tomorrow, dst)
