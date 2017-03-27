@@ -2,9 +2,9 @@
   "title": "Reminder",
   "refresh": "120",
   "hijrioffset": "0",
-  "body": "This Sunday the clock will move forward 1 hour.\r\nAll of the prayers will therefore start 1 hour later based on this calculation.\r\nJummuah prayer will remain at 13:15",
-  "announcement": "Jummuah Prayer",
-  "jummuahtime": "13:10",
+  "body": "The Prophet said, \"None of you will have faith till \r\nhe wishes for his (Muslim) brother what he likes \r\nfor himself.\"",
+  "announcement": "Assalamu alaikum",
+  "jummuahtime": "13:15",
   "jamaahmethods": "afterthis,,fixed,afterthis,afterthis,afterthis",
   "jamaahoffsets": "0:30,,13:50,0:15,0:10,0:15",
   "refreshmessage": "Welcome!"
