@@ -150,7 +150,7 @@ h4.ui.header {
 .ui.huge.header {
     /*height: .6em;*/
     min-height: .5em;
-    font-size: 12em;
+    font-size: 14em;
     /*line-height: 10rem;*/
     font-weight: 400;
     margin:0;
@@ -174,10 +174,10 @@ h4.ui.header {
     /*font-size: .65em;*/
 }
 .timetable .ui.attached.segment {
-    font-size: .5em;
+    font-size: .8em;
 }
 .third .ui.attached.segment {
-    font-size: .95em;
+    font-size: .9em;
 }
 .ui.bottom.attached.segment {
     font-size: .8em;
@@ -193,14 +193,17 @@ h4.ui.header {
     border-top: 2px solid rgba(255,255,255,.5);
     box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
 }
-
+.ui.segment .description {
+  text-transform: none;
+  font-size: 1.1em;
+}
 .header.arabic {
     font-size: 1.4em;
     text-align: center;
 }
 
 .timetable .header.arabic {
-    font-size: 1.2em;
+    font-size: 1.3em;
 }
 
 .timetable .ui.bottom.attached.basic.segment {
@@ -226,7 +229,7 @@ h4.ui.header {
 .ui.grid>.row.prayers {
     font-family: Roboto,'Helvetica Neue',Arial,Helvetica,sans-serif;
     font-variant: small-caps;
-    font-weight: 300;
+    font-weight: 400;
     background:rgba(255,255,255,.7)!important;
     padding: 0;
     margin: .15em;
