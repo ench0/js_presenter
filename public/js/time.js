@@ -13,7 +13,7 @@ var Prayer = function(name, namenext, tomorrow, dst) {
 	this.namenext = namenext;
 	this.tomorrow = tomorrow;
 	this.dst = dst;
-  console.log(this.dst)
+  // console.log(this.dst)
 
 	this.now = moment().tz("Europe/Dublin").add(this.tomorrow).add(this.dst, 'h');
 	this.adj = 0;
