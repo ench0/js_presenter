@@ -81,7 +81,7 @@ exports.view = function(req, res, next) {
         function(err, rows) {
 
     // var message = null;
-    console.log('rows!!!'+rows);
+    // console.log('rows!!!'+rows);
     // console.log(req.query.message);
 
     var message = req.query.message;

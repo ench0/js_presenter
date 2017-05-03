@@ -1,29 +1,22 @@
-div.ui.basic.segment.slider
-    for row in rows[0]
+div.main
+  div.section
+    div.content.top(style="padding-top: 1em;")
+      .wide-containermain
+        #slidesmain
+          ul.slides-container
+            for row in rows[0]
+              li
+                img(style="height: 850px" src="/images/icci/"+row.id+"/"+row.image title="")
 
-        div.ui.basic.container
-            div.ui.basic.segment
 
-                img(style="height:856px;padding:0 5px;" src="/images/icci/"+row.id+"/"+row.image title="" class="ui fluid image")
+                div.maincaption
+                    h3= S(row.title).stripTags().truncate(70).s
+                    div.content= S(row.body).stripTags().truncate(220).s
 
-
-                div(style="padding:5px 0px 25px;margin:10px 5px;text-align:justify;")
-                    h3.ui.top.attached.segment.header= S(row.title).stripTags().truncate(70).s
-                        //- <%= Curtail.truncate(HtmlSanitizeEx.strip_tags(title), word_boundary: ~r/\S[\.]/, length: 68, omission: "...") %>
-                    h4.ui.middle.attached.segment= S(row.body).stripTags().truncate(220).s
-                    //- <%= Curtail.truncate(HtmlSanitizeEx.strip_tags(body), word_boundary: ~r/\S[\.]/, length: 420, omission: "...") %>
-
-                    h5.ui.bottom.attached.segment.header
-                        span(style="float:left;")
+                    div.meta
+                        span(style="float:right;")
                             i.icon.write
                             span= row.day + '/' + row.month + '/' + row.year
-                        span(style="float:right;margin-right:5px;")
+                        span(style="float:left;margin-right:5px;")
                             i.icon.mouse.pointer
                             span= S('http://islamireland.ie/news/' + row.name).truncate(90).s
-
-
-
-    //- for poster <- @posters do %>
-    //-  [id, title, body, date, image, url] = poster %>
-    //- { date, _time } = date %>
-    //- {_, date} = Date.from_erl(date) %>

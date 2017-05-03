@@ -1,0 +1,113 @@
+extends layout
+
+block content
+
+    style='html,body {height: 100%;}.ui.timetable.grid{height:90%;}.third.wide.stretched.column{height: 1080px;}'
+
+    div#refresh
+        div.fadein
+        div#message-text(class="black")
+        div.fadeout
+
+    div(class='sixteen wide middle aligned column')
+        div(class='ui top basic segment')
+            h4(class='ui horizontal divider header')
+                span
+
+    div(class='ui front padded equal height timetable grid basic segment')
+        div(class='sixteen wide stretched column')
+            div(class='ui equal height grid')
+
+
+
+
+                div(class='sixteen wide middle aligned column')
+                    div(class='ui top basic segment')
+                        div(class='ui sizer vertical segment' id='date-time')
+                            //- <!--<p class='ui center aligned small header' style='display:none;' id='days-year')doy</p)--)
+                            h1(class='ui center aligned huge header' id='time') time
+
+
+                div(class='sixteen wide middle aligned column')
+                    div(class='ui top basic segment')
+                        div(class='ui sizer vertical segment' id='date-time')
+                            p(class='ui center aligned small header' id='date') date
+                            //- <!--<p class='ui center aligned small header' style='display:none;' id='days-year')doy</p)--)
+
+
+                div(class='sixteen wide middle aligned column')
+                    div.ui.four.column.grid
+                        div.row.header
+                            div(class='column left aligned') Prayer
+                            div(class='column center aligned') Adhan
+                            div(class='column center aligned') Iqamah
+                            div(class='column right aligned') صلاة
+                        each val in [['fajr','الفجر'], ['shurooq', 'الشروق'], ['dhuhr', 'الظهر'], ['asr', 'العصر'], ['maghrib', 'المغرب'], ['isha', 'العشاء']]
+                            div.row.prayers(id="row-"+val[0])
+                                div(class='column left aligned')= val[0]
+                                div(class='column center aligned' id='prayer-time-'+val[0])
+                                div(class='column center aligned' id='jamaah-time-'+val[0])
+                                div(class='column right aligned arabic')= val[1]
+
+
+
+                //- div(class='sixteen wide middle aligned column')
+                //-     table(class='ui very basic table')
+                //-         thead
+                //-             tr
+                //-                 th(class='left aligned four wide') Prayer
+                //-                 th(class='center aligned four wide') Adhan
+                //-                 th(class='center aligned four wide') Iqamah
+                //-                 th(class='right aligned four wide arabic') صلاة
+                //-         tbody
+                //-             each val in [['fajr','الفجر'], ['shurooq', 'الشروق'], ['dhuhr', 'الظهر'], ['asr', 'العصر'], ['maghrib', 'المغرب'], ['isha', 'العشاء']]
+                //-                 tr(class=val[0] id='row-'+val[0])
+                //-                     td(class='left aligned')= val[0]
+                //-                     td(class='center aligned' id='prayer-time-'+val[0]) Adhan time
+                //-                     td(class='center aligned' id='jamaah-time-'+val[0])
+                //-                     td(class='right aligned arabic')= val[1]
+
+
+                div(class='sixteen wide middle aligned column')
+                    div(class='ui equal width grid')
+                        //- div(class='right aligned column')
+                        //-     p Next prayer
+                        div(class='right aligned column') 
+                            p
+                                span(id='pending-name') Prayer
+                        div(class='left aligned column')
+                            p(id='timetoprayer') Countdown
+                        //- <!--<p id='timetofast')</p)0-->
+
+
+                div(class='sixteen wide middle aligned info column')
+                    div(class="ui segments")
+
+                        div(class='ui middle attached basic segment')
+                            h4(class='ui horizontal divider header')
+                                i(class='tiny info icon')
+                                = settings.title
+                            p(class='arabic' style='white-space:pre-line;')!= settings.body
+
+
+                        div(class='ui bottom attached basic segment')
+                            h1(class='header arabic' style='white-space: pre-line;')!= settings.announcement
+
+
+
+    script!= timedef
+
+
+    script(src='/js/reload.js')
+    script(src='/js/jquery.min.js')
+    //- script(src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
+    script(src='/js/semantic.min.js')
+    script(src='/js/jquery.bxslider.min.js')
+
+    script(src='/js/moment.min.js')
+    script(src='/js/moment-timezone-with-data.js')
+    script(src='/js/moment-hijri.js')
+    script(src='/js/db/timetable.js')
+    script(src='/js/time.js')
+    script(src='/js/refresh.js')
+    script(src='/js/script.js')

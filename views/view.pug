@@ -1,41 +1,33 @@
 extends layout_edit
 
 block content
-  div.ui.fixed.inverted.menu
-    div.ui.inverted.orange.vertical.masthead.center.aligned.basic.segment
-      div.ui.text.container
-        h1.ui.inverted.header Islamic Cultural Centre of Ireland
+  h1.center Islamic Cultural Centre of Ireland
 
 
-  div.ui.main.text.container
-    h2.ui.header #{title}
+  div.container
+    h2 #{title}
     if message
-      div.ui.icon.positive.message
+      div.message
         i.inbox.icon
-        div.content
-          div.header #{message}
-          //- - message=nil
-          //- p!= req.body
+        div.header #{message}
 
-
-
-    table.ui.celled.table
+    table
       thead
         tr
-          th.three.wide Prayer
-          th.center.aligned.two.wide Adhan
-          th.center.aligned.two.wide Iqamah
-          th.center.aligned.four.wide Calculation method
-          th.center.aligned Calculation offset
+          th Prayer
+          th Adhan
+          th Iqamah
+          th.center Calculation method
+          th.center Calculation offset
 
 
       tbody
       each val in time
         tr
           td!= value=(val.name===time.nextPrayerName ? '<strong>'+val.name+'</strong>' : val.name)
-          td.center.aligned= value=(undefined===val ? '' : val.prayerTimeDisp)
-          td.center.aligned= value=(undefined===val ? '' : val.jamaahTimeDisp)
-          td.center.aligned
+          td.center= value=(undefined===val ? '' : val.prayerTimeDisp)
+          td.center= value=(undefined===val ? '' : val.jamaahTimeDisp)
+          td.center
             if val.jamaahMethod=="beforenext"
               span Before next
             else if val.jamaahMethod=="afterthis"
@@ -45,7 +37,7 @@ block content
             else
               span
               
-          td.center.aligned
+          td.center
             if val.jamaahOffsetHour
               - if(val.jamaahOffsetMinute < 10) minutepre = '0' + val.jamaahOffsetMinute; else minutepre = val.jamaahOffsetMinute;
                 span= val.jamaahOffsetHour + ":" + minutepre
@@ -53,7 +45,7 @@ block content
 
 
 
-    div.ui.small.segment
+    div
       div.column
         h3= settings.title
         p(style='white-space:pre-line;')= settings.body
@@ -66,17 +58,17 @@ block content
 
 
 
-    div.ui.equal.width.grid.small.segment
-      div.six.wide.column
+    div
+      div
         = "Screen refresh: " + settings.refresh + " minutes"
-      div.six.wide.column
+      div
         = "Jummuah time: " + settings.jummuahtime
-      div.four.wide.column
+      div
         = "Hijri offset: " + settings.hijrioffset
 
-
-    div.ui.small.basic.segment
-      a.ui.rounded.inverted.primary.button(href="/edit") Edit
+    br
+    div
+      a.primary.button(href="/edit") Edit
 
 
 
