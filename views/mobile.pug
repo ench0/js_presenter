@@ -39,8 +39,15 @@ block content
         - var hadiths = settings.body.split("\r\n");
         - var announcements = settings.announcement.split("\r\n");
 
+
+        div#ramadan.section.center
+            div.content
+
+
         div.section
             div.content.bottom.darkgrey-b.white-f.center= "Friday Prayer " + settings.jummuahtime
+
+    div#overlay
 
     script!= timedef
 
@@ -52,5 +59,11 @@ block content
     script(src='/js/time.js')
     script(src='/js/jquery.min.js')
     script(src='/js/clock.js')
-    script(src='/js/jquery.vticker.min.js')
     script(src='/js/script.js')
+
+    style(type="text/css").
+      #overlay {
+        background: rgba(0,0,0,0);
+        z-index: -9;
+        display: none;
+      }

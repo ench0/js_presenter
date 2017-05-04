@@ -180,7 +180,7 @@ var timeDisp = (function() {
   }
   
   var hijriMonth = moment().format("iM");
-  console.log(hijriMonth);
+  // console.log(hijriMonth);
   // Ramadan countdown
   if (hijriMonth == "8")
   {

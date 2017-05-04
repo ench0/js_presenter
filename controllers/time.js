@@ -18,8 +18,6 @@ var settings = require('./settings');
  * 		@license Used momentjs library for time manipulation, rest of code free for distribution provided this info is included.
  */
 
-(function(){
-
 var tomorrow = 0;
 
 /* JAMAAH CALC */
@@ -128,7 +126,6 @@ var times = function() {
 
   return (output)
 }
-times();
 
 
 times = times();

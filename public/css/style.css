@@ -180,8 +180,8 @@ input.slider {
 .maincaption {
   padding:5px 0px 25px;
   width: 580px;
-  margin-top: 860px;
-  position: fixed;
+  /*margin-top: 860px;*/
+  /*position: fixed;*/
   text-align:justify;
 }
 .maincaption div.content {
@@ -194,7 +194,7 @@ input.slider {
 }
 .maincaption div.meta {
   margin: 10px;
-  font-size: 60%;
+  font-size: 50%;
 }
 #ticker {
   /*display: none;*/

@@ -1,22 +1,20 @@
 div.main
   div.section
     div.content.top(style="padding-top: 1em;")
-      .wide-containermain
-        #slidesmain
-          ul.slides-container
-            for row in rows[0]
-              li
-                img(style="height: 850px" src="/images/icci/"+row.id+"/"+row.image title="")
+      #mainslider
+        for row in rows[0]
+          div
+            img(style="height: 850px" src="/images/icci/"+row.id+"/"+row.image title="")
 
 
-                div.maincaption
-                    h3= S(row.title).stripTags().truncate(70).s
-                    div.content= S(row.body).stripTags().truncate(220).s
+            div.maincaption
+                h3= S(row.title).stripTags().truncate(70).s
+                div.content= S(row.body).stripTags().truncate(220).s
 
-                    div.meta
-                        span(style="float:right;")
-                            i.icon.write
-                            span= row.day + '/' + row.month + '/' + row.year
-                        span(style="float:left;margin-right:5px;")
-                            i.icon.mouse.pointer
-                            span= S('http://islamireland.ie/news/' + row.name).truncate(90).s
+                div.meta
+                    span(style="float:right;")
+                        i.icon.write
+                        span= row.day + '/' + row.month + '/' + row.year
+                    span(style="float:left;margin-right:5px;")
+                        i.icon.mouse.pointer
+                        span= S('http://islamireland.ie/news/' + row.name).truncate(90).s
