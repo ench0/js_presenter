@@ -34,36 +34,41 @@ block content
             th.center Calculation offset
 
 
-
+        tbody
+        - i = 0;
         each val in time
-          tr
-            td!= value=(val.name===time.nextPrayerName ? '<strong>'+val.name+'</strong>' : val.name)
-            td.center= value=(undefined===val ? '' : val.prayerTimeDisp)
-            td.center= value=(undefined===val ? '' : val.jamaahTimeDisp)
-            td.center
-              if val.jamaahMethod
-                select(name='jamaahmethod'+val.name)
-                  each method in [['fixed','Fixed'],['afterthis','After adhan'],['beforenext','Before next']]
-                    if method[0] == val.jamaahMethod
-                      option(value=method[0] selected='selected')= method[1]
-                    else
-                      option(value=method[0])= method[1]
-            td.center
-              if val.jamaahOffsetHour
-                select.left.floated(name='jamaahoffset'+val.name+'hour')
-                  each hour in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
-                    if hour == val.jamaahOffsetHour
-                      option(selected='selected')=hour
-                    else
-                      option= hour
-                span.left &nbsp;
-                select.left(name='jamaahoffset'+val.name+'minute')
-                  each minute in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59]
-                    - if(minute < 10) minutepre = '0' + minute; else minutepre = minute;
-                    if minute == val.jamaahOffsetMinute
-                      option(value=minute selected='selected')= minutepre
-                    else
-                      option(value=minute)= minutepre
+          - i++
+          if i < 7
+            tr
+              td= val.name
+              td.center= value=(undefined===val ? '' : val.disp)
+              td.center= value=(undefined===val ? '' : val.jamaahdisp)
+              td.center
+                if val.jamaahMethodSetting
+                  select(name='jamaahmethod'+val.name)
+                    each method in [['fixed','Fixed'],['afterthis','After adhan'],['beforenext','Before next']]
+                      if method[0] == val.jamaahMethodSetting
+                        option(value=method[0] selected='selected')= method[1]
+                      else
+                        option(value=method[0])= method[1]
+              td.center
+                - jamaahOffsetHour = (val.jamaahOffsetSetting)[0]
+                - jamaahOffsetMinute = (val.jamaahOffsetSetting)[1]
+                if jamaahOffsetHour
+                  select.left.floated(name='jamaahoffset'+val.name+'hour')
+                    each hour in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+                      if hour == jamaahOffsetHour
+                        option(selected='selected')=hour
+                      else
+                        option= hour
+                  span.left &nbsp;
+                  select.left(name='jamaahoffset'+val.name+'minute')
+                    each minute in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59]
+                      - if(minute < 10) minutepre = '0' + minute; else minutepre = minute;
+                      if minute == jamaahOffsetMinute
+                        option(value=minute selected='selected')= minutepre
+                      else
+                        option(value=minute)= minutepre
 
 
 
@@ -89,7 +94,7 @@ block content
       
         div.field
           label(for='refresh') Refresh timeout:
-          input.ui.slider#refresh(type='range', name='refresh' min='30' max='180' step='30' value=(undefined===body.refresh ? settings.refresh : body.refresh) )
+          input(type='range', name='refresh' min='30' max='180' step='30' value=(undefined===body.refresh ? settings.refresh : body.refresh) )
           br
           span 030-060-090-120-150-180
 
