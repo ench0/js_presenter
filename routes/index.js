@@ -16,7 +16,7 @@ var basic = auth.basic({
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'ICCI Timetable' });
 });
 router.get('/timetable', function(req, res, next) {
   res.render('timetable', { title: 'Timetable', settings: settings, timedef: timedef });
