@@ -25,7 +25,7 @@ exports.view = function(req, res, next) {
     // var message = null;   
     // console.log(req.query.message);
 
-    // console.log("!!!!!"+time)
+    // console.log("!!!!!"+time.fajr.disp)
 
     var message = req.query.message;
     res.render('view', { title: 'View Timetable', settings: settings, time: time, message: message });

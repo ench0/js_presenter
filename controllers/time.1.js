@@ -25,7 +25,7 @@ var jamaahCalc = function(num, time, timenext){
     case "beforenext": jamaahOffset = (timenext.subtract({minutes: parseInt(jamaahOffsetSetting[0]*60 + jamaahOffsetSetting[1])})).diff(time, 'minutes'); break;
     case "": jamaahOffset = ""; break
 	}
-  return {jamaahOffset: jamaahOffset, jamaahMethodSetting: jamaahMethodSetting, jamaahOffsetSetting: jamaahOffsetSetting};
+  return {jamaahOffset: jamaahOffset, jamaahMethodSetting: jamaahMethodSetting};
 }
 
 /* PRAYER CONSTRUCTOR */
@@ -49,13 +49,8 @@ var Prayer = function(now, num) {
   this.disp = this.time.format("HH:mm");
 
   var jamaahc = jamaahCalc(num, this.time2, this.timenext)
-  this.jamaahOffsetSetting = jamaahc.jamaahOffsetSetting;
-  // this.jamaahOffsetSplit = (jamaahc.jamaahOffsetSetting).split(",");
-  // console.log(typeof(this.jamaahOffsetSetting), this.jamaahOffsetSetting[0])
-
   this.jamaahOffset = jamaahc.jamaahOffset;
   this.jamaahMethodSetting = jamaahc.jamaahMethodSetting;
-
   this.jamaahtime = this.time2.add(this.jamaahOffset, 'minutes');
 
   if (this.jamaahOffset != "") this.jamaahdisp = this.jamaahtime.format("HH:mm"); else this.jamaahdisp = "";

@@ -43,11 +43,9 @@ block content
                 span
                 
             td.center
-              - jamaahOffsetHour = (val.jamaahOffsetSetting)[0]
-              - jamaahOffsetMinute = (val.jamaahOffsetSetting)[1]
-              if jamaahOffsetHour
-                - if(jamaahOffsetMinute < 10) minutepre = '0' + jamaahOffsetMinute; else minutepre = jamaahOffsetMinute;
-                  span= jamaahOffsetHour + ":" + minutepre
+              if val.jamaahOffsetHour
+                - if(val.jamaahOffsetMinute < 10) minutepre = '0' + val.jamaahOffsetMinute; else minutepre = val.jamaahOffsetMinute;
+                  span= val.jamaahOffsetHour + ":" + minutepre
 
 
 
