@@ -156,7 +156,7 @@ var timeDisp = (function() {
 
     // set isha to after maghrib if join == on
     if (settings.join == "on" && list[i] == "isha" ) {
-      document.getElementById("prayer-time-"+list[i]).innerHTML = "after";
+      document.getElementById("prayer-time-"+list[i]).innerHTML = "with";
       document.getElementById("jamaah-time-"+list[i]).innerHTML = "maghrib";
     }
     else {
@@ -182,10 +182,8 @@ var timeDisp = (function() {
 	}
 
   // Friday Prayer
-  if ( 
-       (moment().isBetween(moment({day: '5', hour: '13', minute: '10'}), moment({day: '5', hour: '14', minute: '5'})))
-      //  ||
-      //  (moment().isBetween(moment({day: '1', hour: '22', minute: '03'}), moment({day: '1', hour: '22', minute: '04'})))
+  if ( (moment().format("d") == '5') &&
+       (moment().isBetween(moment({hour: '13', minute: '10'}), moment({hour: '14', minute: '5'})))
   ) {
 	  document.getElementById("overlay").style = "background:rgba(0,0,0,.85);z-index:1000;";
 	  document.getElementById("overlay").textContent = "Jummuah Prayer";
