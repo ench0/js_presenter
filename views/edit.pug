@@ -130,6 +130,21 @@ block content
               else
                 option= adjust
 
+        div.field
+          label(for='join') Join maghrib and isha:
+          //- span= settings.join
+          select.left(name='join') 
+            each adjust in [[0, "off"], [1, "on"]]
+              if adjust[1] == body.join
+                option(selected='selected')=adjust[1]
+              if adjust[1] == settings.join
+                option(selected='selected')=adjust[1]
+              else
+                option= adjust[1]
+
+
+
+
       br
       button.positive.button(type='submit') Submit
 

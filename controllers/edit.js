@@ -103,6 +103,7 @@ exports.edit_post = function(req, res, next) {
                 "body":body,
                 "announcement":req.body.announcement,
                 "jummuahtime": req.body.jummuahtimehour+':'+req.body.jummuahtimeminute,
+                "join": req.body.join,
                 "jamaahmethods":req.body.jamaahmethodfajr+",,"+req.body.jamaahmethoddhuhr+","+req.body.jamaahmethodasr+","+req.body.jamaahmethodmaghrib+","+req.body.jamaahmethodisha,
                 "jamaahoffsets":req.body.jamaahoffsetfajrhour+":"+req.body.jamaahoffsetfajrminute+",,"+req.body.jamaahoffsetdhuhrhour+":"+req.body.jamaahoffsetdhuhrminute+","+req.body.jamaahoffsetasrhour+":"+req.body.jamaahoffsetasrminute+","+req.body.jamaahoffsetmaghribhour+":"+req.body.jamaahoffsetmaghribminute+","+req.body.jamaahoffsetishahour+":"+req.body.jamaahoffsetishaminute,
                 "refreshmessage":req.body.refreshmessage

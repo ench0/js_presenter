@@ -134,8 +134,15 @@ var timeDisp = (function() {
   timeToPrayer.minutes = appendZero(timeToPrayer.minutes());
   timeToPrayer.seconds = appendZero(timeToPrayer.seconds());
   if (timeToPrayer.hours.length > 2) {var countdowndisp = "0:00:00"; var nextname = "isha"} else {var countdowndisp = timeToPrayer.hours + ':' + timeToPrayer.minutes + ':' + timeToPrayer.seconds;var nextname = def.next.name;}
- 	document.getElementById("pending-name").innerHTML = nextname;
- 	document.getElementById("timetoprayer").innerHTML = countdowndisp;
+  // no isha countdown if join == on
+  if (settings.join == "on" && def.next.name == "isha") {
+    document.getElementById("pending-name").innerHTML = " ";
+    document.getElementById("timetoprayer").innerHTML = " ";
+  }
+  else {
+    document.getElementById("pending-name").innerHTML = nextname;
+    document.getElementById("timetoprayer").innerHTML = countdowndisp;
+  }
 
 
 
@@ -145,14 +152,23 @@ var timeDisp = (function() {
     timeToJamaah.hours = appendZero(timeToJamaah.hours());
     timeToJamaah.minutes = appendZero(timeToJamaah.minutes());
     timeToJamaah.seconds = appendZero(timeToJamaah.seconds());
+    // console.log(settings.join, list[i])
 
-		document.getElementById("prayer-time-"+list[i]).innerHTML = def[list[i]].disp;
-		document.getElementById("jamaah-time-"+list[i]).innerHTML = def[list[i]].jamaahdisp;
+    // set isha to after maghrib if join == on
+    if (settings.join == "on" && list[i] == "isha" ) {
+      document.getElementById("prayer-time-"+list[i]).innerHTML = "after";
+      document.getElementById("jamaah-time-"+list[i]).innerHTML = "maghrib";
+    }
+    else {
+		  document.getElementById("prayer-time-"+list[i]).innerHTML = def[list[i]].disp;
+      document.getElementById("jamaah-time-"+list[i]).innerHTML = def[list[i]].jamaahdisp;
+    }
+
+    // highlight next
 		document.getElementById("row-"+list[i]).className = "row line";//reset
 		document.getElementById("row-"+def.next.name).className = "row line next";
 
     if (def.current.name == "isha" && tomorrow == 1) var starttime = moment(); else if (def.current.name == "isha" && tomorrow == 0) var starttime = def.current.time; else var starttime = def.current.time;
-    // console.log(def.current.name, tomorrow)
     if ((moment().add(tomorrow, 'day')).isBetween(starttime, def.current.jamaahtime))
     {
       document.getElementById("pending-name").innerHTML = "Prepare for "+ def.current.name + " Jamaah";
@@ -179,15 +195,14 @@ var timeDisp = (function() {
 	  document.getElementById("overlay").textContent = "";
   }
   
+  // Ramadan countdown
   var hijriMonth = moment().format("iM");
   // console.log(hijriMonth);
-  // Ramadan countdown
   if (hijriMonth == "8")
   {
     document.getElementById("ramadan").style = "display: table-row;";
     document.getElementById("ramadan").innerHTML = "<div class='content'>"+moment.duration(moment().endOf('imonth').diff(moment())).humanize()+" until Ramadan</div>";
   }
-
 
 	setTimeout(function(){timeDisp()}, 1000);
 });
