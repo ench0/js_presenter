@@ -1,12 +1,12 @@
 {
-  "title": "Rave faith till he wishes for his (Muslim)  brother what he likes for himself.eminder",
+  "title": "Welcome",
   "refresh": "180",
   "hijrioffset": "0",
-  "body": "From Friday 12th May maghrib and isha prayers will be joined together",
-  "announcement": "Assalamu alaikum\r\nWelcome to ICCI",
+  "body": "Ramadan Mubarak",
+  "announcement": "Ramadan starts on Saturday, 27th May\r\nFirst Taraweeh prayer on Friday after Isha",
   "jummuahtime": "13:15",
   "join": "on",
-  "jamaahmethods": "afterthis,,fixed,afterthis,afterthis,afterthis",
-  "jamaahoffsets": "0:30,,13:50,0:15,0:10,0:5",
+  "jamaahmethods": "afterthis,,fixed,fixed,afterthis,afterthis",
+  "jamaahoffsets": "0:15,,13:50,18:30,0:10,0:5",
   "refreshmessage": "Welcome!"
 }
