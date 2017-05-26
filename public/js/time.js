@@ -186,7 +186,7 @@ var timeDisp = (function() {
        (moment().isBetween(moment({hour: '13', minute: '10'}), moment({hour: '14', minute: '5'})))
   ) {
 	  document.getElementById("overlay").style = "background:rgba(0,0,0,.85);z-index:1000;";
-	  document.getElementById("overlay").textContent = "Jummuah Prayer";
+	  document.getElementById("overlay").innerHTML = "Jummuah Prayer<br/>"+moment().format('iDD iMMMM iYYYY')+"<br/>"+moment().format('DD MMMM YYYY');
   }
   else {
     document.getElementById("overlay").style = "background: rgba(0,0,0,0);z-index:-9";
@@ -195,8 +195,9 @@ var timeDisp = (function() {
   
   // Ramadan countdown
   var hijriMonth = moment().format("iM");
+  var hijriDay = moment().format("iD");
   // console.log(hijriMonth);
-  if (hijriMonth == "8")
+  if (hijriMonth == "8" && hijriDay != "30")
   {
     document.getElementById("ramadan").style = "display: table-row;";
     document.getElementById("ramadan").innerHTML = "<div class='content'>"+moment.duration(moment().endOf('imonth').diff(moment())).humanize()+" until Ramadan</div>";

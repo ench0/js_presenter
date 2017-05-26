@@ -33,8 +33,9 @@ body.edit {
 }
 h1 {
   font-size: 2.2em;/*5em*/
-  text-shadow: 0 0 5px rgba(0,0,0,.5);
+  text-shadow: 0 0 7px rgba(0,0,0,.95);
   margin: .25em 0;
+  font-weight: 500;
 }
 h3, h4 {
   margin: .25em 0;
@@ -257,4 +258,9 @@ input.slider {
 #ramadan {
   display: none;
   width: 100%;
+}
+
+span#pending-name, span#timetoprayer {
+  display: inline-block;
+  margin: 0 1em;
 }

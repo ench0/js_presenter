@@ -40,7 +40,7 @@ block content
         div.section.center
             div.content
                 span#pending-name Prayer
-                div#timetoprayer Countdown
+                span#timetoprayer Countdown
 
         - var hadiths = settings.body.split("\r\n");
         - var announcements = settings.announcement.split("\r\n");
@@ -106,6 +106,6 @@ block content
       $(function() {$('#ticker').vTicker('init', {
         speed: 500, 
         pause: 10000,
-        showItems: 1,
+        showItems: 2,
         padding:0})
         });
