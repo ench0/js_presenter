@@ -183,7 +183,7 @@ var timeDisp = (function() {
 
   // Taraweeh Prayer
   if ( (moment().format("iM") == '9') &&
-       (moment().isBetween(moment({hour: '23', minute: '00'}), moment({hour: '23', minute: '59'})))
+       (moment().isBetween(moment({hour: '0', minute: '01'}), moment({hour: '0', minute: '30'})))
   ) {
 	  document.getElementById("overlay").style = "background:rgba(0,0,0,.85);z-index:1000;";
 	  document.getElementById("overlay").innerHTML = "Taraweeh Prayer<br/>"+moment().format('iDD iMMMM iYYYY')+"<br/>"+moment().format('DD MMMM YYYY');
