@@ -198,9 +198,6 @@ input.slider {
   margin: 10px;
   font-size: 50%;
 }
-#ticker {
-  /*display: none;*/
-}
 .overlay {
   background: rgba(0,0,0,0);
   /*z-index: 9999;*/
