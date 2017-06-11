@@ -193,25 +193,28 @@ var timeDisp = (function() {
   ) {
 	  document.getElementsByClassName("overlay")[0].style = "background:rgba(0,0,0,.85);z-index:1000;";
 	  document.getElementsByClassName("overlay")[0].innerHTML = "Taraweeh Prayer<br/>"+moment().format('iDD iMMMM iYYYY')+"<br/>"+moment().format('DD MMMM YYYY');
-    if (document.getElementById("main")) {
-      var targetDiv = document.getElementById("main").getElementsByClassName("overlay")[0];
-      targetDiv.style = "background:rgba(255,255,255,.15)";
-    }
-
     // document.getElementById('overlay').getElementsByTagName('div').innerHTML = "dd"
   }
   // Friday Prayer
   else if ( (moment().format("d") == '5') &&
        (moment().isBetween(moment({hour: '13', minute: '10'}), moment({hour: '14', minute: '5'})))
   ) {
-	  document.getElementById("overlay").style = "background:rgba(0,0,0,.85);z-index:1000;";
-	  document.getElementById("overlay").innerHTML = "Jummuah Prayer<br/>"+moment().format('iDD iMMMM iYYYY')+"<br/>"+moment().format('DD MMMM YYYY');
+	  document.getElementsByClassName("overlay")[0].style = "background:rgba(0,0,0,.85);z-index:1000;";
+	  document.getElementsByClassName("overlay")[0].innerHTML = "Jummuah Prayer<br/>"+moment().format('iDD iMMMM iYYYY')+"<br/>"+moment().format('DD MMMM YYYY');
   }
   else {
-    document.getElementById("overlay").style = "background: rgba(0,0,0,0);z-index:-9";
-	  document.getElementById("overlay").textContent = "";
+    document.getElementsByClassName("overlay")[0].style = "background: rgba(0,0,0,0);z-index:-9";
+	  document.getElementsByClassName("overlay")[0].textContent = "";
   }
-  
+
+  // no overlay on main
+  if (document.getElementById("main")) {
+    var targetDiv = document.getElementById("main").getElementsByClassName("overlay")[0];
+    targetDiv.style = "background:rgba(255,255,255,.15)";
+  }
+  // console.log((moment().format("d")));
+
+
   // Ramadan countdown
   var hijriMonth = moment().format("iM");
   var hijriDay = moment().format("iD");
