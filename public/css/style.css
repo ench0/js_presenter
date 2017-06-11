@@ -39,7 +39,7 @@ h1 {
 }
 h3, h4 {
   margin: .25em 0;
-  font-size: .85em;
+  /*font-size: 1.2em;*/
 }
 
 .left {
@@ -201,7 +201,7 @@ input.slider {
 #ticker {
   /*display: none;*/
 }
-#overlay {
+.overlay {
   background: rgba(0,0,0,0);
   /*z-index: 9999;*/
   display: block;
@@ -264,4 +264,8 @@ input.slider {
 span#pending-name, span#timetoprayer {
   display: inline-block;
   margin: 0 1em;
+}
+
+div.third.column.column-30 #overlay {
+  background: none;
 }

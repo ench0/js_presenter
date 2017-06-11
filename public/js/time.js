@@ -181,12 +181,24 @@ var timeDisp = (function() {
     }
 	}
 
+
+// console.log(def.isha.jamaahtime.format('m'))
+// console.log(moment().endOf('day').add(35, 'minutes'))
+// console.log((moment().isBetween(moment(def.isha.jamaahtime.format()), moment().endOf('day'))))
   // Taraweeh Prayer
   if ( (moment().format("iM") == '9') &&
-       (moment().isBetween(moment({hour: '0', minute: '01'}), moment({hour: '0', minute: '30'})))
+       ((moment().isBetween(moment({hour: '0', minute: '00'}), moment({hour: '0', minute: '35'}))) ||
+       (moment().isBetween(moment({hour: '23', minute: '15'}), moment({hour: '23', minute: '59', second: '59'}))))
+      //  (((moment().isBetween(moment({hour: def.isha.jamaahtime.format('H'), minute: def.isha.jamaahtime.format('m')}), moment().endOf('day').add(35, 'minutes')))))
   ) {
-	  document.getElementById("overlay").style = "background:rgba(0,0,0,.85);z-index:1000;";
-	  document.getElementById("overlay").innerHTML = "Taraweeh Prayer<br/>"+moment().format('iDD iMMMM iYYYY')+"<br/>"+moment().format('DD MMMM YYYY');
+	  document.getElementsByClassName("overlay")[0].style = "background:rgba(0,0,0,.85);z-index:1000;";
+	  document.getElementsByClassName("overlay")[0].innerHTML = "Taraweeh Prayer<br/>"+moment().format('iDD iMMMM iYYYY')+"<br/>"+moment().format('DD MMMM YYYY');
+    if (document.getElementById("main")) {
+      var targetDiv = document.getElementById("main").getElementsByClassName("overlay")[0];
+      targetDiv.style = "background:rgba(255,255,255,.15)";
+    }
+
+    // document.getElementById('overlay').getElementsByTagName('div').innerHTML = "dd"
   }
   // Friday Prayer
   else if ( (moment().format("d") == '5') &&

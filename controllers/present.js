@@ -1,5 +1,4 @@
 var settings = require('../controllers/settings');
-var jamaah = require('../controllers/jamaah');
 var time = require('../controllers/time');
 // var fs = require('fs');
 // var zlib = require('zlib');

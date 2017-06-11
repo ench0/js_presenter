@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var settings = require('../controllers/settings');
-var jamaah = require('../controllers/jamaah');
 var edit = require('../controllers/edit');
 var present = require('../controllers/present');
 var timedef = "var settings="+JSON.stringify(settings);
