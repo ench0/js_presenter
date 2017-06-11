@@ -35,41 +35,45 @@ block content
 
 
         tbody
-        - i = 0;
+          - i = 0;
+          - names = ["fajr", "shurooq", "dhuhr", "asr", "maghrib", "isha"]
+          - jamaahmethods = (settings.jamaahmethods).split(",");
+          - jamaahoffsets = (settings.jamaahoffsets).split(",");
+
         each val in time
-          - i++
-          if i < 7
+          if i < 6
             tr
-              td= val.name
+              td= names[i]
               td.center= value=(undefined===val ? '' : val.disp)
-              td.center= value=(undefined===val ? '' : val.jamaahdisp)
+              - if(jamaahmethods[i]=="fixed") var jamaahdisp = jamaahoffsets[i]; else var jamaahdisp = val.jamaahdisp;
+              td.center= value=(undefined===val ? '' : jamaahdisp)
               td.center
-                if val.jamaahMethodSetting
-                  select(name='jamaahmethod'+val.name)
+                if jamaahmethods[i]
+                  select(name='jamaahmethod'+names[i])
                     each method in [['fixed','Fixed'],['afterthis','After adhan'],['beforenext','Before next']]
-                      if method[0] == val.jamaahMethodSetting
+                      if method[0] == jamaahmethods[i]
                         option(value=method[0] selected='selected')= method[1]
                       else
                         option(value=method[0])= method[1]
               td.center
-                - jamaahOffsetHour = (val.jamaahOffsetSetting)[0]
-                - jamaahOffsetMinute = (val.jamaahOffsetSetting)[1]
+                - jamaahOffsetHour = (jamaahoffsets[i].split(":"))[0]
+                - jamaahOffsetMinute = (jamaahoffsets[i].split(":"))[1]
                 if jamaahOffsetHour
-                  select.left.floated(name='jamaahoffset'+val.name+'hour')
+                  select.left.floated(name='jamaahoffset'+names[i]+'hour')
                     each hour in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
                       if hour == jamaahOffsetHour
                         option(selected='selected')=hour
                       else
                         option= hour
                   span.left &nbsp;
-                  select.left(name='jamaahoffset'+val.name+'minute')
+                  select.left(name='jamaahoffset'+names[i]+'minute')
                     each minute in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59]
                       - if(minute < 10) minutepre = '0' + minute; else minutepre = minute;
                       if minute == jamaahOffsetMinute
                         option(value=minute selected='selected')= minutepre
                       else
                         option(value=minute)= minutepre
-
+          - i++ 
 
 
       div

@@ -26,6 +26,7 @@ exports.view = function(req, res, next) {
     // console.log(req.query.message);
 
     // console.log("!!!!!"+time.fajr.disp)
+    // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
     var message = req.query.message;
     res.render('view', { title: 'View Timetable', settings: settings, time: time, message: message });
@@ -91,10 +92,12 @@ exports.edit_post = function(req, res, next) {
 
         var title = req.body.title;
 
-        console.error("req.body.jamaahmethodfajr")
+        // console.error("req.body.jamaahmethodfajr")
 
-        console.log(req.body.jamaahmethodfajr);
+        // console.log(req.body.jamaahmethodfajr);
         // jamaahmethods = (req.body.jamaahmethods).split(",");
+
+
 
         var settingsnew = {
                 "title":req.body.title,

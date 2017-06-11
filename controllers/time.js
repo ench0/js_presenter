@@ -25,7 +25,7 @@ var jamaahCalc = function(num, time, timenext){
     case "beforenext": jamaahOffset = (timenext.subtract({minutes: parseInt(jamaahOffsetSetting[0]*60 + jamaahOffsetSetting[1])})).diff(time, 'minutes'); break;
     case "": jamaahOffset = ""; break
 	}
-  return {jamaahOffset: jamaahOffset, jamaahMethodSetting: jamaahMethodSetting, jamaahOffsetSetting: jamaahOffsetSetting};
+  return jamaahOffset;
 }
 
 /* PRAYER CONSTRUCTOR */
@@ -48,26 +48,10 @@ var Prayer = function(now, num) {
 
   this.disp = this.time.format("HH:mm");
 
-  var jamaahc = jamaahCalc(num, this.time2, this.timenext)
-  this.jamaahOffsetSetting = jamaahc.jamaahOffsetSetting;
-  // this.jamaahOffsetSplit = (jamaahc.jamaahOffsetSetting).split(",");
-  // console.log(typeof(this.jamaahOffsetSetting), this.jamaahOffsetSetting[0])
+  var jamaahOffset = jamaahCalc(num, this.time2, this.timenext);
+  this.jamaahtime = this.time2.add(jamaahOffset, 'minutes');
 
-  this.jamaahOffset = jamaahc.jamaahOffset;
-  this.jamaahMethodSetting = jamaahc.jamaahMethodSetting;
-
-  this.jamaahtime = this.time2.add(this.jamaahOffset, 'minutes');
-
-  if (this.jamaahOffset != "") this.jamaahdisp = this.jamaahtime.format("HH:mm"); else this.jamaahdisp = "";
-
-	switch (num) {
-		case 0: this.name = "fajr"; break;
-		case 1: this.name = "shurooq"; break;
-		case 2: this.name = "dhuhr"; break;
-		case 3: this.name = "asr"; break;
-		case 4: this.name = "maghrib"; break;
-		case 5: this.name = "isha"; break;
-	}
+  if (jamaahOffset != "") this.jamaahdisp = this.jamaahtime.format("HH:mm"); else this.jamaahdisp = "";
 }
 
 var times = function() {
@@ -139,5 +123,11 @@ var times = function() {
 
 
 times = times();
+
+function appendZero(unit) {
+  if (unit < 10) var unit = '0'+unit;
+  else var unit = unit;
+  return unit;
+}
 // console.log(times.jamaahOffsetHour)
 module.exports = times;

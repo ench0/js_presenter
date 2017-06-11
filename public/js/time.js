@@ -16,7 +16,10 @@ var jamaahCalc = function(num, time, timenext){
 
 	switch (jamaahMethodSetting) {
 		case "afterthis": jamaahOffset = parseInt(jamaahOffsetSetting[0]*60 + jamaahOffsetSetting[1]); break;
-		case "fixed": var jamaahOffset = (moment().month(time.get('month')).date(time.get('date')).hour(jamaahOffsetSetting[0]).minute(jamaahOffsetSetting[1])).diff(time, 'minutes'); break;
+		case "fixed":
+      var jamaahOffset = (moment().month(time.get('month')).date(time.get('date')).hour(jamaahOffsetSetting[0]).minute(jamaahOffsetSetting[1])).diff(time, 'minutes');
+      if (moment().month(time.get('month')).date(time.get('date')).hour(jamaahOffsetSetting[0]).minute(jamaahOffsetSetting[1]).isBefore(time)) jamaahOffset --;
+      break;
     case "beforenext": jamaahOffset = (timenext.subtract({minutes: parseInt(jamaahOffsetSetting[0]*60 + jamaahOffsetSetting[1])})).diff(time, 'minutes'); break;
     case "": jamaahOffset = ""; break
 	}
@@ -182,9 +185,6 @@ var timeDisp = (function() {
 	}
 
 
-// console.log(def.isha.jamaahtime.format('m'))
-// console.log(moment().endOf('day').add(35, 'minutes'))
-// console.log((moment().isBetween(moment(def.isha.jamaahtime.format()), moment().endOf('day'))))
   // Taraweeh Prayer
   if ( (moment().format("iM") == '9') &&
        ((moment().isBetween(moment({hour: '0', minute: '00'}), moment({hour: '0', minute: '35'}))) ||

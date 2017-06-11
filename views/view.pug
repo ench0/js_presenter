@@ -11,45 +11,45 @@ block content
         i.inbox.icon
         div.header #{message}
 
-    table
-      thead
-        tr
-          th Prayer
-          th Adhan
-          th Iqamah
-          th.center Calculation method
-          th.center Calculation offset
+    - i = 0;
+    - names = ["fajr", "shurooq", "dhuhr", "asr", "maghrib", "isha"]
+    - jamaahmethods = (settings.jamaahmethods).split(",");
+    - jamaahoffsets = (settings.jamaahoffsets).split(",");
 
 
-      tbody
-      - i = 0;
-      each val in time
-        - i++
-        if i < 7
-          tr
-            //- td!= value=(val.name===time.nextPrayerName ? '<strong>'+val.name+'</strong>' : val.name)
-            //- td!= value=(val.name===val.name ? '<strong>'+val.name+'</strong>' : val.name)
-            td= val.name
-            td.center= value=(undefined===val ? '' : val.disp)
-            td.center= value=(undefined===val ? '' : val.jamaahdisp)
-            td.center
-              if val.jamaahMethodSetting=="beforenext"
-                span Before next
-              else if val.jamaahMethodSetting=="afterthis"
-                span After adhan
-              else if val.jamaahMethodSetting=="fixed"
-                span Fixed time
-              else
-                span
-                
-            td.center
-              - jamaahOffsetHour = (val.jamaahOffsetSetting)[0]
-              - jamaahOffsetMinute = (val.jamaahOffsetSetting)[1]
-              if jamaahOffsetHour
-                - if(jamaahOffsetMinute < 10) minutepre = '0' + jamaahOffsetMinute; else minutepre = jamaahOffsetMinute;
-                  span= jamaahOffsetHour + ":" + minutepre
+    div.container(style="width:100%")
+        div(style="width:100%")
+            div.row(style="width:100%")
+                div.column.left(style="width:100%") Prayer
+                div.column.center Adhan
+                div.column.center Iqamah
+                div.column.center Method
+                div.column.center Offset
+            each val in time
+                    
+              if i < 6
+                div.row.line(id="row-"+names[i])
 
+                  div.column.left= names[i]
+                  div.column.center(id='prayer-time-'+val[0])= value=(undefined===val ? '' : val.disp)
+                  - if(jamaahmethods[i]=="fixed") var jamaahdisp = jamaahoffsets[i]; else var jamaahdisp = val.jamaahdisp;
+                  div.column.center(id='jamaah-time-'+val[0])= value=(undefined===val ? '' : jamaahdisp)
+                  div.column.center
+                    if jamaahmethods[i]=="beforenext"
+                      span Before next
+                    else if jamaahmethods[i]=="afterthis"
+                      span After adhan
+                    else if jamaahmethods[i]=="fixed"
+                      span Fixed time
+                    else
+                      span
+                  - jamaahOffsetHour = (jamaahoffsets[i].split(":"))[0]
+                  - jamaahOffsetMinute = (jamaahoffsets[i].split(":"))[1]
+                  - if(jamaahOffsetMinute < 10) var minutepre = '0' + jamaahOffsetMinute; else var minutepre = jamaahOffsetMinute;
+                  - if(i==1) {minutepre = ""; divider = "";} else divider = ":"
+                  div.column.center= jamaahOffsetHour + divider + minutepre
 
+              - i++
 
 
     div
