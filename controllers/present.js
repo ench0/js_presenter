@@ -2,19 +2,18 @@ var settings = require('../controllers/settings');
 var time = require('../controllers/time');
 // var fs = require('fs');
 // var zlib = require('zlib');
-var jsonfile = require('jsonfile')
-var timedef = "var settings="+JSON.stringify(settings);
+var jsonfile = require('jsonfile');
+var timedef = "var settings=" + JSON.stringify(settings);
 var S = require('string');
 
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
-  multipleStatements: true,
-  host     : 'localhost',
-  user     : 'icci',
-  password : 'icci',
-
-  database: 'icci'
+    multipleStatements: true,
+    host     : 'localhost',
+    user     : 'icci',
+    password : 'icci',
+    database: 'icci'
 });
 
 connection.query('USE icci');
