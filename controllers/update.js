@@ -7,7 +7,7 @@ var child;
 
 exports.github = function(req, res, next) {
   // executes `pwd`
-  child = exec("cd /home/icci/present && git pull", function (error, stdout, stderr) {
+  child = exec("update-present", function (error, stdout, stderr) {
     var message = "Updating!";
     console.log('stdout: ' + stdout);
     // sys.print('stderr: ' + stderr);
