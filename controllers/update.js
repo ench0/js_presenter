@@ -9,7 +9,7 @@ exports.github = function(req, res, next) {
   // executes `pwd`
   child = exec("/usr/bin/update-present", function (error, stdout, stderr) {
     var message = "Updating!";
-    console.log('stdout: ' + stdout);
+    var stdout = stdout;
     // sys.print('stderr: ' + stderr);
     if (error !== null) {
       console.log('exec error: ' + error);
