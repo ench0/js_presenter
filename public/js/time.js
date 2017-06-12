@@ -210,7 +210,7 @@ var timeDisp = (function() {
   // no overlay on main
   if (document.getElementById("main")) {
     var targetDiv = document.getElementById("main").getElementsByClassName("overlay")[0];
-    targetDiv.style = "background:rgba(255,255,255,.15)";
+    targetDiv.style = "background:rgba(255,255,255,0)";
   }
   // console.log((moment().format("d")));
 
