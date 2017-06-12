@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var settings = require('../controllers/settings');
 var edit = require('../controllers/edit');
+var update = require('../controllers/update');
 var present = require('../controllers/present');
 var timedef = "var settings="+JSON.stringify(settings);
 
@@ -24,11 +25,14 @@ router.get('/mobile', function(req, res, next) {
   res.render('mobile', { title: 'Timetable', settings: settings, timedef: timedef });
 });
 
+
 /* GET request for creating a Genre. NOTE This must come before route that displays Genre (uses id) */
 router.get('/edit', auth.connect(basic), edit.edit_get);
 
 /* POST request for creating Genre. */
 router.post('/edit', auth.connect(basic), edit.edit_post);
+
+router.get('/update', auth.connect(basic), update.github);
 
 router.get('/view', edit.view);
 
